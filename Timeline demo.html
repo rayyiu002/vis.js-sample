@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Task Monitor</title>
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="lib/css/bootstrap-reboot.min.css" rel="stylesheet" type="text/css" />
+    <link href="lib/css/bootstrap-grid.min.css" rel="stylesheet" type="text/css" />
+    <link href="lib/css/vis.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="visualization"></div>
+
+
+<!-- import js -->
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/js/bootstrap.bundle.min.js"></script>
+<script src="lib/js/vis.js"></script>
+<script src="lib/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    // load the local .json file
+    $(document).ready(function () {
+        $.getJSON("data.json", function (data) {
+
+            var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
+            $.each(data, function (index, value) {
+                arrItems.push(value);       // PUSH THE VALUES INSIDE THE ARRAY.
+                console.log('arrItems=' + JSON.stringify(arrItems));
+
+
+                // DOM element where the Timeline will be attached
+  var container = document.getElementById('visualization');
+
+  // Create a DataSet (allows two way data-binding)
+  var items = new vis.DataSet(arrItems[0]);
+
+  // Configuration for the Timeline
+  var options = {};
+
+  // Create a Timeline
+  var timeline = new vis.Timeline(container, items, options);
+
+
+
+            // EXTRACT VALUE FOR TABLE HEADER.
+            <!--var col = [];-->
+            <!--for (var i = 0; i < arrItems.length; i++) {-->
+                <!--for (var key in arrItems[i]) {-->
+                    <!--if (col.indexOf(key) === -1) {-->
+                        <!--col.push(key);-->
+                    <!--}-->
+                <!--}-->
+            <!--}-->
+            <!---->
+             <!--for (var i = 0; i < arrItems.length; i++) {-->
+                <!--for (var j = 0; j < col.length; j++) {-->
+                    <!--var tabCell = tr.insertCell(-1);-->
+                    <!--tabCell.innerHTML = arrItems[i][id];-->
+                <!--}-->
+            <!--}-->
+
+            });
+            })});
+</script>
+<script type="text/javascript">
+
+
+
+  <!--// DOM element where the Timeline will be attached-->
+  <!--var container = document.getElementById('visualization');-->
+
+  <!--// Create a DataSet (allows two way data-binding)-->
+  <!--var items = new vis.DataSet([-->
+    <!--{id: 1, content: 'item 1', start: '2013-04-20'},-->
+    <!--{id: 2, content: 'item 2', start: '2013-04-14'},-->
+    <!--{id: 3, content: 'item 3', start: '2013-04-18'},-->
+    <!--{id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},-->
+    <!--{id: 5, content: 'item 5', start: '2013-04-25'},-->
+    <!--{id: 6, content: 'item 6', start: '2013-04-27'}-->
+  <!--]);-->
+
+  <!--// Configuration for the Timeline-->
+  <!--var options = {};-->
+
+  <!--// Create a Timeline-->
+  <!--var timeline = new vis.Timeline(container, items, options);-->
+</script>
+</body>
+</html>
